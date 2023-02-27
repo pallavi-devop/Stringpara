@@ -1,5 +1,11 @@
 pipeline {
 	agent any
+	parameters {
+  string defaultValue: 'QA', description: '''QA
+UAT
+DEV''', name: 'env'
+}
+
 	
 	stages {
 	    stage('Checkout') {
@@ -8,11 +14,11 @@ pipeline {
 		      }}
 		stage('Build') {
 	           steps {
-			  sh '/home/swapnil/Documents/GRRAS/apache-maven-3.6.0/bin/mvn install'
+			  sh '/home/pallavi/Documents/GRASS/apache-maven-3.9.0/bin/mvn install'
 	                 }}
 		stage('Deployment'){
 		    steps {
 			
-			sh 'cp target/LoginWebApp.war swapnil@127.0.1.1:/home/swapnil/Documents/GRRAS/apache-tomcat-8.5.35/webapps'
+			sh 'cp target/Stringpara.war /home/pallavi/Documents/GRASS/apache-tomcat-9.0.72/webapps'
 	}
 }}}
